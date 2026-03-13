@@ -976,7 +976,8 @@ if (match) {
                     }, 1000);
 
                 } catch (e) {
-                    notify('下载失败，请重试');
+                    console.error('下载错误详情:', e);
+                    notify(`下载失败: ${e.message}，请重试`);
                 }
             };
 
