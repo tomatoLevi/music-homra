@@ -1,8 +1,8 @@
 {
   "rewrites": [
-     {
-      "source": "/kuwo/(.*)",
-      "destination": "https://lv-sycdn.kuwo.cn/$1"
+    {
+      "source": "/kuwo/:subdomain/:path*",
+      "destination": "https://:subdomain-sycdn.kuwo.cn/:path*"
     }
   ]
 }
