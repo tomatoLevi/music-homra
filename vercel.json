@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+     {
+      "source": "/kuwo/(.*)",
+      "destination": "https://lv-sycdn.kuwo.cn/$1"
+    }
+  ]
+}
