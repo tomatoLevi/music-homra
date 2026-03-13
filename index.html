@@ -932,22 +932,23 @@
                         notify('获取下载链接失败');
                         return;
                     }
+                    let blob = null;
                     const originalUrl = data.url;
-const match = originalUrl.match(/https:\/\/([a-z]{2})-sycdn\.kuwo\.cn\/(.*)/);
-
-if (match) {
-    const subdomain = match[1];
-    const path = match[2];
-    let fileText = `https://music.homra.cn/kuwo/${subdomain}/${path}`;
-    
-    const response = await fetch(fileText);
-    if (!response.ok) throw new Error('下载失败');
-    
-    const blob = await response.blob();
-} else {
-    console.error('无法解析的 kuwo URL 格式:', originalUrl);
-    throw new Error('无效的音乐资源地址');
-}
+                    const match = originalUrl.match(/https:\/\/([a-z]{2})-sycdn\.kuwo\.cn\/(.*)/);
+                    
+                    if (match) {
+                        const subdomain = match[1];
+                        const path = match[2];
+                        let fileText = `https://music.homra.cn/kuwo/${subdomain}/${path}`;
+                        
+                        const response = await fetch(fileText);
+                        if (!response.ok) throw new Error('下载失败');
+                        
+                        blob = await response.blob();
+                    } else {
+                        console.error('无法解析的 kuwo URL 格式:', originalUrl);
+                        throw new Error('无效的音乐资源地址');
+                    }
                     let artist = '未知';
                     if (song.artist) {
                         if (Array.isArray(song.artist)) {
